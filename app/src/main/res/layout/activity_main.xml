@@ -108,4 +108,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventButton"
         app:layout_constraintVertical_bias="0.01" />
+
+    <Button
+        android:id="@+id/top40Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="getMusicData"
+        android:text="Music"
+        app:layout_constraintBottom_toTopOf="@+id/userPermissionsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.269"
+        app:layout_constraintStart_toEndOf="@+id/twitterButton"
+        app:layout_constraintTop_toBottomOf="@+id/timerButton"
+        app:layout_constraintVertical_bias="0.01" />
 </android.support.constraint.ConstraintLayout>

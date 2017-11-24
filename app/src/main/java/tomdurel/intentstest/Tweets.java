@@ -48,10 +48,20 @@ public class Tweets extends AppCompatActivity
                 // get json string from service url
                 String json = jParser.getJSONFromUrl(yourServiceUrl);
 
-                // save returned json to your test string
-                jsonTest = json.toString();
+                // parse returned json string into json array
+                JSONArray jsonArray = new JSONArray(json);
 
-            } catch (Exception e) {
+                // loop through json array and add each tweet to item in arrayList
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject json_message = jsonArray.getJSONObject(i);
+
+                    if (json_message != null) {
+                        //add each tweet to ArrayList as an item
+                        items.add(json_message.getString("text"));
+                    }
+
+                }
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
             return null;
@@ -60,8 +70,10 @@ public class Tweets extends AppCompatActivity
         @Override
         // below method will run when service HTTP request is complete, will then bind tweet text in arrayList to ListView
         protected void onPostExecute(String strFromDoInBg) {
-            TextView tv1 = (TextView)findViewById(R.id.jsonText);
-            tv1.setText(jsonTest);
+            // bind the values of the ArrayList to the ListView to display the tweets
+            ListView list = (ListView)findViewById(R.id.tweetList);
+            ArrayAdapter<String> tweetArrayAdapter = new ArrayAdapter<String>(Tweets.this, android.R.layout.simple_expandable_list_item_1, items);
+            list.setAdapter(tweetArrayAdapter);
         }
     }
 

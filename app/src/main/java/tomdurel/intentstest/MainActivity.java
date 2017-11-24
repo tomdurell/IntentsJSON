@@ -79,5 +79,13 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(this, Tweets.class);
         startActivity(intent);
     }
+    public void getMusicData(View view)
+    {
+
+        // create an intent to start the activity called userPermissions
+        Intent intent = new Intent(this, Music.class);
+        // run Permissions activity
+        startActivity(intent);
+    }
 
 }
